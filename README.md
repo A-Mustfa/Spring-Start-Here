@@ -12,7 +12,7 @@ This repository contains all examples implemented from the book **"Spring Start 
 
 ## 🔹 PART 1: Fundamentals
 
-### [Ch1 - Spring in the Real World](./Ch1/)
+### Ch1 - Spring in the Real World
 Introduction to frameworks, the Spring ecosystem, and where Spring fits in real-world applications.
 
 ### [Ch2 - Defining Beans](./Ch2/)
