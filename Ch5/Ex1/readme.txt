@@ -1,0 +1,1 @@
+creating singleton instance using @Bean annotation .

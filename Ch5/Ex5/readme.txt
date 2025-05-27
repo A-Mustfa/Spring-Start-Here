@@ -1,0 +1,1 @@
+creating prototype bean scope using the annotation @scope(beanDefinition.SCOPE_PROTOTYPE)
