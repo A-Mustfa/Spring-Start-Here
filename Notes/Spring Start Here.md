@@ -1,6 +1,6 @@
 
 
-## ~={pink}Chapter 1 =~
+## Chapter 1
 Spring in the real world
 ### 1.0 what is framework ?
 frame work is set of software functionalities - capabilities that helps us to build an application 
@@ -8,98 +8,94 @@ frame work is set of software functionalities - capabilities that helps us to bu
 - all Spring capabilities rely on two components (Spring context - Spring aspects )
 - it us provide the needed components to build our app instead of typing the code from scratch it is provide convention over configuration .
 - it also provide different tools that we could choose from them what we want to build our app and assemble these tools together .
-- depending on your requirements you'll choose the right parts from the framework .~={orange} '4/1' =~ 
+- depending on your requirements you'll choose the right parts from the framework '4/1'  
 - it is save a lot of time and effort by providing a well tested components .
-- for reusing of code cause a lot of apps similar in some common requirements and only differs in business logic : ~={orange}'5/2'=~ 
+- for reusing of code cause a lot of apps similar in some common requirements and only differs in business logic : '5/2'
 	- logging error , warnings.
 	- connecting to database .
 	- protection.
 	- communicate with other applications.
-- business logic : ~={orange}'6/3'=~
+- business logic : '6/3'
 	it is the implemented code that give the business requirements and user expectations .
 ### 1.2 The Spring ecosystem :
-it is not just a framework it is a set of components that help you creating till deploying your application to web in spring ecosystem the main components are ~={orange}'8/1'=~
-- ~={green} spring core=~ : ~={orange}'8/1.1'=~
+it is not just a framework it is a set of components that help you creating till deploying your application to web in spring ecosystem the main components are orange}
+-  spring core : '8/1.1'
 	it is rely on two main components ,
 	1. Spring context : enable spring to manage instances of the app .
 	2. Spring aspects : helps spring to intercept and manipulate methods defined in app .
-- ~={green}spring MVC (model - view - controller)=~ : ~={orange}'8/1.2'=~
+- spring MVC (model - view - controller) : '8/1.2'
 	- enables you to develop web apps that serve http requests . 
-- ~={green}spring data access=~ : ~={orange}'8/1.3'=~
+- spring data access : '8/1.3'
 	helps us for data persistence cause some apps needs to connect to the data base and persist the data on the hard disk .
-- ~={green}spring test=~ : ~={orange}'8/1.4'=~
+- spring test : '8/1.4'
 	the part where we write test to validate app behaviour .
-- ~={purple}1.2.1~={green}=~ Discovering spring core :
+- 1.2.1 Discovering spring core :
 	spring works with the principle IOC 'inversion of control'
-	- <u>IOC 'spring context'</u> :~={orange}  '8/2'=~
+	- <u>IOC 'spring context'</u> :'8/2'
 		- instead of letting the app controls the execution(dependencies), we let spring(dependency) to manage the app .
 		- we instruct the framework to manage the code we write .
 		- glue spring components and app components together to framework .
-	- <u>AOP 'aspect oriented programming '</u> : ~={orange}'9/2'=~
+	- <u>AOP 'aspect oriented programming '</u> : '9/2'
 		- intercept methods that represent the behaviour of the instances 'Aspecting'.
 		- let framework interacts with what the app does .
-- ~={purple}1.2.2=~ <u>Spring Data Access</u> :
+- ~1.2.2 <u>Spring Data Access</u> :
 	it is the way we use to persist the data .
-- ~={purple}1.2.3 =~<u>Spring MVC</u>
+- 1.2.3 <u>Spring MVC</u>
 	- Model View Controller 
 	- we use it to develop web apps that serve http requests using standard servlet fashion .
-- ~={purple}1.2.4=~ <u>Spring Testing</u>
+- 1.2.4 <u>Spring Testing</u>
 	it is where we type test cases 'unit, integration' to see how our app behave and see if it validate the expected requirements
 - Spring Ecosystem has independent projects that has team working on it like :
-	- <u>Spring Data</u> :~={orange} '11/1'=~
+	- <u>Spring Data</u> :'11/1'
 		it helps us to easily ,
 		1. easily connect to database .
 		2. use persistence layer with minimum lines of code .
 		3. deals with sql and NoSql .
-	- <u>Spring Core</u> :~={orange} '11/2,3'=~
+	- <u>Spring Core</u> :'11/2,3'
 		spring project that help us to create backend web apps in the form of :
 		- conversion over configuration : it provides a foundation with default configuration and u just change what you want, this help us to write less code instead of write from scratch . 
-![[SpringEcoSystem.excalidraw]]
 ### 1.3 Spring in real world :
 we can use spring in different technologies like :
-1. ~={green}Backend App=~ : 
+1. Backend App: 
 	spring offers us a large number of tools that we can use to build our backend app and make it integrate with other apps or to persist the data 
-2. ~={green}automation testing framework=~ :
-3. ~={green}desktop app=~
-4. ~={green}mobile app =~
+2. automation testing framework :
+3. desktop app
+4. mobile app 
 ### 1.4 When not to use frameworks :
 - when we do not feel a big impact from changing to framework cause if we do such a thing we could force a only errors without any benefits .
 - you may be implementing a small app that could be easier to implement from scratch rather than using a framework .
-1. ~={green}need to have small foot print=~ :
+1. need to have small foot print :
 	- imagine that you are building a service that doesn't need to be much big and it has to be very small, in this scenario using frame work is a loss cause it requires a bigger space on the server and cause of containers that closed and opened more often you need your app to be small that could save a lot of seconds each time the container opened  .
-2. ~={green}security=~ :
+2. security :
 	in some organizations or companies they do not prefer using an open source frameworks because hackers may find a vulnerable and find a way to access their data .
-3. ~={green}customizing components too much=~ :
+3. customizing components too much :
 	in this case you may find that customizing the components and the configuration of the app is much bigger than implementing the app your self .
-4. ~={green}you don't find any benefit from switching to framework =~  
-### 1.5 What you will learn in this book :
+4. you don't find any benefit from switching to framework   
 
----
----
-## ~={pink}Chapter 2 =~
+## Chapter 2 
 ### Spring Context :
-- ~={green}what is Spring context (application context) ?=~
-	- it is a place in the memory of the application where we put the beans so that spring can see them and integrate with. ~={orange}'22/1'=~
-- ~={green} why context ?=~
+- what is Spring context (application context) ?
+	- it is a place in the memory of the application where we put the beans so that spring can see them and integrate with. '22/1'
+- why context ?
 	- to put the instances of our application in it because spring see only the instances that are inside the context .
 	- spring use beans to connect them with different capabilities .
-- ~={green}how to make context instance ?=~
+- how to make context instance ?
 	- var context = new AnnotaionConfigApplicationContext(Configuration.class);
 ### adding beans to context :
 - there are different ways to put beans inside the context and we use the way that meets our requirements, at first we had to add spring context dependency in the pom.xml .
-	1. ~={green}@Bean Annotation =~
-		1. ~={purple}@Configuration =~
+	1. @Bean Annotation 
+		1. @Configuration 
 			- we make class for the configurations that spring loads it while initializing the context and we put the configuration of the beans inside it 
-		2. ~={purple}@Bean =~
+		2. @Bean 
 			- we declare method that return an instance of the object we want to put inside the context and the name of the method is a noun not verb .
 		3. we add (pass) the configuration class into the context while initializing it
 		- we can add different names for methods so that when we getting bean from context we can refer to them 
 			- ~={purple} Parrot p1 = context.getBean(Parrot.class)=~ -> will get the instance if there is only one if there are more than one we must specify the bean is name   -> ~={purple}p = context.getBean("chicken" , parrot.class)=~
 			- we can name the beans with these attributes~={purple} (name = " " , value = " " , " " )=~
 			- ~={purple}@Primary =~: we put this annotation to point this bean as the default one when creating more than one bean 
-		- ![[Pasted image 20250419225417.png]]
-		- ![[Pasted image 20250419225451.png]]
-		- ![[Pasted image 20250419225716.png]]
+		- ![[SpringStartHereImages/Pasted image 20250419225417.png]]
+		- ![[SpringStartHereImages/Pasted image 20250419225451.png]]
+		- ![[SpringStartHereImages/Pasted image 20250419225716.png]]
 	2. ~={green} Stereo type annotations =~:
 		1. ~={purple}@Component=~ :
 			- put this annotation in top of the class you want to make bean from
@@ -274,8 +270,8 @@ we can use spring in different technologies like :
 	- event trigger -> method call -> ~={purple}join point=~ ~={yellow}'123/6'=~ .
 	- Bean declares methods that Spring will intercept -> ~={purple}target object=~ ~={yellow}'123/8'=~ .
 	- if you requested a reference from target bean spring doesn't give you reference for this bean, instead it gives you reference of the object that implement the Aspect -> ~={purple}proxy=~ : this Approach called ~={purple}weaving=~ ~={yellow}'124/1,2,3'=~ .
-	- ![[Pasted image 20250429070650.png]]
-	- ![[Pasted image 20250429070828.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429070650.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429070828.png]]
 4. ~={blue}implementing Aspects with Spring AOP=~
 	- ~={green}to create Aspect we have to follow these 4 steps :=~
 		1. Enabling Aspect by adding ~={purple}@EnableAspectJAutoProxy=~ to the configuration class ~={yellow}129/1=~ .
@@ -290,9 +286,9 @@ we can use spring in different technologies like :
 		- any class .
 		- any method .
 		- any parameter .
-		- ![[Pasted image 20250429071127.png]]
-	- ![[Pasted image 20250429070909.png]]
-	- ![[Pasted image 20250429071018.png]]
+		- ![[/SpringStartHereImages/Pasted image 20250429071127.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429070909.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429071018.png]]
 5. ~={blue}Altering intercepted method  parameters=~ 
 	- in aspects we can get the parameters used to call intercepted method and change their values 
 	- we can also get values returned from intercepted method and alter them ~={yellow}'135/2'=~ .
@@ -304,20 +300,20 @@ we can use spring in different technologies like :
 		- returned value : ~={purple}Object returned = joinPoint.proceed();=~ . 
 		- we can provide parameters to intercepted method using ~={purple}proceed(Object[ ] obj)=~ method of ~={purple}pointJoint=~ ~={yellow}'139/2'=~.
 	- we can change intercepted method behaviour, but the idea of decoupling part of code is to avoid duplicating the irrelevant code  and focus on business logic ~={yellow}'139/1'=~ .
-	- ![[Pasted image 20250429064826.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429064826.png]]
 6. ~={blue}intercepting annotated method=~
 	- we can use custom annotation to specify (mark) some methods and intercept them only and this happens as follow ~={yellow}'140/1'=~ :
 		1. create custom annotation, accessed at run time .
 			1. at runtime because all aspect happens at runtime
 		2. tell Aspect to intercept these annotated methods .
-		- ![[Pasted image 20250429063757.png]]
+		- ![[SpringStartHereImages/Pasted image 20250429063757.png]]
 7. ~={blue}Other advice annotations :=~
 	- instead of typing complex code like @Around which is very powerful and can intercept and modify intercepted method in every situation but its better to use specific methods that are easy to understand and simple like :
 		1. ~={blue}@Before=~ : we tell spring to execute Aspect logic code before executing the intercepted method .
 		2. ~={blue}@AfterReturn=~ : execute Aspect logic After intercepted method return,  no exception.
 		3. ~={blue}@AfterThrowing=~ : execute Aspect logic after intercepted method throw an exception .
 		4. ~={blue}@After=~ : execute Aspect after executing intercepted method in general .
-		- ![[Pasted image 20250429065700.png]]
+		- ![[SpringStartHereImages/Pasted image 20250429065700.png]]
 		- we do not to receive parameter ~={purple}ProceedingJoinPoint=~ cause the annotation telling Aspect when to executer ~={yellow}'144/1'=~
 8. ~={blue}Aspect execution chain :=~
 	- in real world apps we would have more than one aspect to the same method so we had to know which aspect must run before the other so we had to ask our self :
@@ -326,8 +322,8 @@ we can use spring in different technologies like :
 	- in some cases execution order is important cause changing the order may lead to different results:
 		- to order methods we do this via :
 			- ~={purple}@Order(1)=~ .
-	- ![[Pasted image 20250429070432.png]]
-	- ![[Pasted image 20250429070504.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429070432.png]]
+	- ![[SpringStartHereImages/Pasted image 20250429070504.png]]
 ## ~={pink}Chapter 7=~
 - this chapter give us a foundation about the web apps, what web apps are, how it works, what are components of web apps, approaches of building web app, how the requests are handled.
 1. ~={blue}what is web app ?=~
@@ -336,16 +332,16 @@ we can use spring in different technologies like :
 	- ~={green}what are parts of web app ?=~
 		1. web client : it is the interface that the user interacts with directly, we sometimes refer to it as a browser side . provide a way to user to interact with the app, send request to web server and get responses from it -> frontend ~={yellow}'154/1'=~ .
 		2. web server : it is the side in which get the client request and process it or store data, response to the request -> response back to web client -> beck end ~={yellow}'154/2'=~ .
-		- ![[Pasted image 20250501114728.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501114728.png]]
 	- ~={green}note=~ :
 		- web apps (client-server), the server serves multiple request at the same time (concurrently) .
 		- each client -> instance -> make request so avoid the race condition . ~={yellow}'156/1,2'=~ .
-		- ![[Pasted image 20250501114753.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501114753.png]]
 3. ~={blue}different approaches of implementing web apps :=~
 	1. web server provides fully prepared view and send it to web client (browser) only to display it, server gets request, process it, response in fully prepared view to the browser that will only display the response, web server tells browser how to display it and response in (HTML, CSS, JavaScript) ~={yellow}'157/1'=~ .
-		- ![[Pasted image 20250501114857.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501114857.png]]
 	2. frontend-backend separation : in this way server gets the request, process it and response in raw data, the browser doesn't display it directly, instead it loads frontend app that will get the response and manage how to display the data ~={yellow}'157/2'=~ . 
-		- ![[Pasted image 20250501114922.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501114922.png]]
 	- ~={green}frontend-backend separation :=~
 		1. called modern approach .
 		2. allow more developers to co-operate with each other .
@@ -358,20 +354,20 @@ we can use spring in different technologies like :
 	- ~={green}what happens when servlet container gets request ?=~
 		- it calls the method of the servlet and pass request as an object (parameter) to it ~={yellow}'159/8'=~ .
 		- servlet container gets the request, transfer it to object so that servlet can understand the call the method of servlet and pass request as parameter ~={yellow}'160/0'=~ .
-		- ![[Pasted image 20250501114950.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501114950.png]]
 	- ~={yellow}suppose that you want to build new web page associated with specific path what to do ?=~
 		- you had to create new servlet .
 		- configure it into web container .
 		- assign a path to it ~={yellow}'160/1'=~ .
 	- for any path client could request, their must be a servlet instance inside servlet container associated with this path ~={yellow}160/2=~ .
 	- servlet container -> register multiple servlet instance -> each instance is java object associated with specific path ~={yellow}'161/1'=~ .
-		- ![[Pasted image 20250501115018.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501115018.png]]
 	- ~={green} what is servlet ?=~
 		- it is a java object that interacts directly with servlet container .
 		- entry point of web app .
 		- how data gets inside the app and how the app response ~={yellow}'161/2'=~ .
 	- spring define servlet object -> register it into servlet container -> both can manage it -> if there is any request -> container call method of this object -> in this way we allow servlet to manage requests and responses ~={yellow}'161/3'=~ .
-		- ![[Pasted image 20250501115040.png]]
+		- ![[SpringStartHereImages/Pasted image 20250501115040.png]]
 5. ~={blue}the magic of spring boot :=~
 	- spring boot is a tool for implementing modern spring apps ~={yellow}'162/1'=~ .
 	- spring boot help us create more efficient apps and minimize code effort by eliminating code configurations and focus on business code ~={yellow}'162/2'=~ .
@@ -428,22 +424,22 @@ in this chapter we will talk about how to create dynamic pages and use the data 
 - ~={green}Implementing web app using dynamic view :=~
 	- dynamic means that the data back end sends to the client might be different for each request ~={yellow}'179/1'=~ .
 	- view can get dynamic values from controller ~={yellow}'179/2'=~ .
-	- ![[Pasted image 20250505065031.png]]
-	- ![[Pasted image 20250505065302.png]]
-	- ![[Pasted image 20250505065351.png]]
+	- ![[SpringStartHereImages/Pasted image 20250505065031.png]]
+	- ![[SpringStartHereImages/Pasted image 20250505065302.png]]
+	- ![[SpringStartHereImages/Pasted image 20250505065351.png]]
 - ~={green}Steps to create dynamic views :=~
 	1. create spring project .
 	2. add template engine dependency to pom.xml .
 		1. model : used to store data from controller to view (will be sent to view) ~={yellow}'181/1'=~ .
 			- how to add values to model ?
 				- using .addAttribute("key", value);
-		- ![[Pasted image 20250505065618.png]]
-	3. ![[Pasted image 20250505065718.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505065618.png]]
+	3. ![[SpringStartHereImages/Pasted image 20250505065718.png]]
 	- ~={purple}NOTE :=~
 		- when creating dynamic view we sill put the view inside the template folder 
 			- resources/template .
 	- inside view we had to add prefix of thymeleaf to get the data stored in model 
-		- ![[Pasted image 20250505070221.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505070221.png]]
 		- we  will fetch the data using the prefix th and to get attribute value we will use ${key}
 - ~={green}getting data on HTTP request :=~
 	- there are multiple ways to do it .
@@ -472,20 +468,20 @@ in this chapter we will talk about how to create dynamic pages and use the data 
 		- defining search, filter criteria .
 		- the parameter is optional .
 			- the server knows it might be empty .
-		- ![[Pasted image 20250505072334.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505072334.png]]
 	- we send the data in the request parameter as query .
 	- it is a simple way to send data from client to backend .
 	- to receive the parameters we declare a parameter inside controller is action with the @RequestParam annotation named with the same name of the request parameter .
 		- in this way we are telling spring to get a value from the request parameter with the name of action parameter .
-		- ![[Pasted image 20250505072417.png]]
-		- ![[Pasted image 20250505072449.png]]
-		- ![[Pasted image 20250505072532.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505072417.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505072449.png]]
+		- ![[SpringStartHereImages/Pasted image 20250505072532.png]]
 2. ~={green}Http request path :=~
 	1. prefer to use with mandatory values not optional .
 	2. easier to read .
 	3. directly define variable values in the path .
 	4. it is better to not use this with more than a couple parameters .
-	5. ![[Pasted image 20250505074759.png]]
+	5. ![[./SpringStartHereImages/Pasted image 20250505074759.png]]
 3. ~={green}using http methods=~ 
 	- request path only doesn't describe what client want, so we had to use a verb that describes client intention -> http method .
 	- http method :
