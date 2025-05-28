@@ -38,7 +38,7 @@ it is not just a framework it is a set of components that help you creating till
 	- <u>AOP 'aspect oriented programming '</u> : '9/2'
 		- intercept methods that represent the behaviour of the instances 'Aspecting'.
 		- let framework interacts with what the app does .
-- ~1.2.2 <u>Spring Data Access</u> :
+- 1.2.2 <u>Spring Data Access</u> :
 	it is the way we use to persist the data .
 - 1.2.3 <u>Spring MVC</u>
 	- Model View Controller 
@@ -90,16 +90,16 @@ we can use spring in different technologies like :
 			- we declare method that return an instance of the object we want to put inside the context and the name of the method is a noun not verb .
 		3. we add (pass) the configuration class into the context while initializing it
 		- we can add different names for methods so that when we getting bean from context we can refer to them 
-			- ~={purple} Parrot p1 = context.getBean(Parrot.class)=~ -> will get the instance if there is only one if there are more than one we must specify the bean is name   -> ~={purple}p = context.getBean("chicken" , parrot.class)=~
+			- ~={purple} Parrot p1 = context.getBean(Parrot.class)=~ -> will get the instance if there is only one if there are more than one we must specify the bean is name   -> p = context.getBean("chicken" , parrot.class)
 			- we can name the beans with these attributes~={purple} (name = " " , value = " " , " " )=~
-			- ~={purple}@Primary =~: we put this annotation to point this bean as the default one when creating more than one bean 
-		- ![[SpringStartHereImages/Pasted image 20250419225417.png]]
-		- ![[SpringStartHereImages/Pasted image 20250419225451.png]]
-		- ![[SpringStartHereImages/Pasted image 20250419225716.png]]
-	2. ~={green} Stereo type annotations =~:
-		1. ~={purple}@Component=~ :
+			- @Primary : we put this annotation to point this bean as the default one when creating more than one bean 
+		- ![](SpringStartHereImages/Pasted%20image%2020250419225417.png)
+		- ![](SpringStartHereImages/Pasted%20image%2020250419225451.png)
+		- ![](SpringStartHereImages/Pasted%20image%2020250419225716.png)
+	2. Stereo type annotations :
+		1. @Component :
 			- put this annotation in top of the class you want to make bean from
-		2. ~={purple}@ComponentScan (basePackages = "package")=~
+		2. @ComponentScan (basePackages = "package")
 			- add this annotation in top of the configuration class to tell spring that there are components to search for .
 		- Spring will create an instance and put it inside the context .
 		- Notes : 
@@ -107,11 +107,11 @@ we can use spring in different technologies like :
 			2. spring manage the instance and we cant modify it like we did with @Bean
 			3. we can use this with the classes inside our application only and can't use it with external libraries .
 			4. if we want to make spring do something after creating the bean or before destroying it we have two annotations from jakarta dependency they are :
-				1. ~={purple} @PostConstruct .=~
-				2. ~={purple} @PreDestroy .=~
-	3. ~={cyan} programmability =~ 
+				1.  @PostConstruct .
+				2. @PreDestroy .
+	3. programmability 
 		- sometimes we could have some conditions or business logic depending on this we wan to choose which of the instance we are going to put inside the context and we can't do this with the previous ways but with spring 5 we now can do it using :
-			- ~={purple} .registerBean()=~ method :
+			- .registerBean() method :
 				it consist of 4 parameters 
 				1. the name that will be assigned to the bean
 				2. the class of this instance 
@@ -126,73 +126,73 @@ we can use spring in different technologies like :
 | have no access to instance untill creation | can modify instance before putting it in context |
 
 ---
-## ~={pink}Chapter 3 =~
+## Chapter 3 
 - in this chapter we talk about how to make relations between beans and connect them with each other cause in sometimes we need use some capabilities from one class inside another, we had to tell spring to get a ref of a bean from its context to use it with another bean and there are two ways to do such thing :
-	1. ~={cyan} wiring =~: by calling the method that create the instance of the bean .
-	2. ~={cyan}auto wire =~: by defining the method parameter with the same name as the bean is class
-		- ~={purple} @autowired=~ annotation also
+	1.  wiring : by calling the method that create the instance of the bean .
+	2. auto wire : by defining the method parameter with the same name as the bean is class
+		- @autowired=~ annotation also
 - to make relation between beans we done it in two steps .
 	1. creating bean in context .
 	2. make relation with another bean ( has-A ) .
-1. ~={green} Wiring beans by calling method that create that instance =~ :
+1. Wiring beans by calling method that create that instance =~ :
 	- in configuration file we call the method from another and the method will get a reference for the bean that is inside it is context .
 		- spring checks if the bean exists spring will return a ref to it
 		- else spring will create the bean , put it into context and return a ref after creation .
-2. ~={green} using auto wire with @bean method parameters =~:
+2. using auto wire with @bean method parameters :
 	- in this we we name the identifier of the method parameter with the same name of the bean (method that creates the bean ) .
-	- so in this way we instruct spring to search inside its context for that bean and inject it inside parameter ~={yellow} '59/1' =~.
-	- instruct spring to provide instance from its context has the same type as method parameter~={yellow} '58/1'=~ .
+	- so in this way we instruct spring to search inside its context for that bean and inject it inside parameter '59/1' .
+	- instruct spring to provide instance from its context has the same type as method parameter'58/1' .
 	- this method called Dependency Injection DI -> application of IOC -> spring injects the dependency ?
 		- loose coupling .
 		- less code .
-3. ~={green} @AutoWired Annotation =~ :
-	1. ~={cyan}with class field=~ :
+3.  @AutoWired Annotation  :
+	1. with class field :
 		- we add the annotation above the class field and in this way we instruct spring to inject a value to this field from its context
 		- used with examples , profs
 		- not good because it doesn't allow is to make fields final .
-	2. ~={cyan}with class constructor=~ :
+	2. with class constructor :
 		- the most used one with real world apps .
 		- it allow us to make fields final so no one can change them .
-		- in this way we instruct spring to inject value from its context to the desired bean is constructor parameter so when initializing that bean spring will provide the instance from its context ~={yellow} '64/1' =~
-	3. ~={cyan}with setters=~ :
-		- we define setter with ~={purple}@autowired=~ annotation .
+		- in this way we instruct spring to inject value from its context to the desired bean is constructor parameter so when initializing that bean spring will provide the instance from its context  '64/1' 
+	3. with setters :
+		- we define setter with @autowired annotation .
 		- more code, can't define fields as final .
-### ~={blue} Circular dependency =~: 
+### Circular dependency : 
 - this happen when we define two beans that depends on each other while creation, so spring will be in a deadlock .
-- we just need to avoid this method with our own cause no such a specific solution~={yellow} '66/1' =~.
-### ~={blue} choosing from multiple beans =~: 
-1. ~={green}making the identifier of the parameter has the same name of the bean=~ ( method that returns that bean ) .
+- we just need to avoid this method with our own cause no such a specific solution '66/1' .
+### choosing from multiple beans : 
+1. making the identifier of the parameter has the same name of the bean ( method that returns that bean ) .
 2. what if the identifier doesn't have the same name of any bean
-	1. ~={purple}@primary=~ annotation , by making one of the beans inside the context as primary so if we didn't specify the correct name. spring will inject the primary one .
-	2. ~={purple}@Qualifier=~ and providing the bean name inside the value attribute @Qualifier("Parrot2") -> same name as bean (method that returns that instance).
+	1. @primary annotation , by making one of the beans inside the context as primary so if we didn't specify the correct name. spring will inject the primary one .
+	2. @Qualifier and providing the bean name inside the value attribute @Qualifier("Parrot2") -> same name as bean (method that returns that instance).
 ---
-## ~={pink}Chapter 4 =~
+## Chapter 4 
 - ~={blue}using interfaces to define contracts=~
 	- interfaces used to define contracts between implementations.
 	- interfaces used to define responsibilities, object that implement this interface had to define this responsibility .
 	- interfaces is what we need to happen .
-	- objects is how it should happens . ~={yellow}'76/1'=~
-	1. ~={green}using interfaces for decoupling implementations =~:
+	- objects is how it should happens . '76/1'
+	1. }using interfaces for decoupling implementations :
 		- decoupling implementations is helpful cause with this we can type less code, can extend and maintain the app easily .
 		- instead of defining what we want and how it happen, we should only define what we want and don't put in mind how it happens .
 		- if we depend on how (implementation), further if we wanted to change something we will have to rewrite every thing .
-	2. ~={green}the requirement of the scenario=~ :
-	3. ~={green}implementing requirement without using framework =~:
-		- object that deal with database -> repository, DAO (Data access object) . ~={yellow}'80/2'=~
-		-  object that deal with things outside project -> proxy .~={yellow} '80/3'=~
-		- object that implements use case, business logic -> service . ~={yellow}'80/1'=~
-- ~={blue}using dependency injection with abstraction=~
-	1. ~={green}deciding which objects should be part of spring context=~ :
+	2. the requirement of the scenario :
+	3. implementing requirement without using framework:
+		- object that deal with database -> repository, DAO (Data access object) . '80/2'
+		-  object that deal with things outside project -> proxy . '80/3'
+		- object that implements use case, business logic -> service . '80/1'
+- using dependency injection with abstraction
+	1. deciding which objects should be part of spring context :
 		- objects that spring had to see them to use them with its functionalities .
-		- at first, we ask should this object be managed by spring ? ~={yellow}'86/1'=~
-		- we don't put every object cause if it is in the context and spring don't use it , it would lead to less performance , over engineering ~={yellow}'86/2,3'=~ .
-		- it doesn't make sense to put annotation on top of I or abstract class that can't be instantiated ~={yellow}'86/4' =~.
-		- if we declared an attribute of an interface, spring is smart enough to find the instance, bean that provide the implementation of this interface and inject it there ~={yellow}'88/0'=~ .
+		- at first, we ask should this object be managed by spring ? '86/1'
+		- we don't put every object cause if it is in the context and spring don't use it , it would lead to less performance , over engineering '86/2,3' .
+		- it doesn't make sense to put annotation on top of I or abstract class that can't be instantiated '86/4'.
+		- if we declared an attribute of an interface, spring is smart enough to find the instance, bean that provide the implementation of this interface and inject it there '88/0' .
 		- @AutoWired optional with class that have one constructor .
-		- with DI we don't need to implement, declare new instance of a class to use it, we only get it from context ~={yellow} '89/1'=~ .
-		- DI, focus on what you want, not how it done, less code ~={yellow}'89/2'=~ .
-	2. ~={green}choosing what to wire from multiple implementations of an abstraction=~ :
-		- we need to tell spring which bean to inject ~={yellow}'91/1'=~
+		- with DI we don't need to implement, declare new instance of a class to use it, we only get it from context '89/1' .
+		- DI, focus on what you want, not how it done, less code '89/2' .
+	2. choosing what to wire from multiple implementations of an abstraction :
+		- we need to tell spring which bean to inject '91/1'
 		- @Priamary Annotation : with this we we instruct spring to inject default value from it is context if it didn't specified before .
 		- using @Qaulifier annotation :
 			- to define bean name , first
@@ -200,85 +200,85 @@ we can use spring in different technologies like :
 		- why to have more than one implementation ?
 			- cause some times the provided implementation doesn't match our needs so had to provide our custom implementation .
 			- more objects each object may wants another type of fruit .
-- ~={blue}focusing on object responsibilities with stereotype annotations =~
+- focusing on object responsibilities with stereotype annotations
 	- @service -> define component , declare it is responsibility -> implement use case .
-	- @repository -> define component, mark its responsibility -> manage data persisting~={yellow} '96/3' =~.
+	- @repository -> define component, mark its responsibility -> manage data persisting '96/3'.
 	- @component -> generic annotation doesn't specify object is responsibility .
 ---
-## ~={pink}Chapter 5 =~
+## Chapter 5 
 "In Singleton scope, immutability ensures thread safety, consistency, and avoids shared state bugs."
-- in this chapter we talk about how spring manage the creation of the bean and maintain it is lifecycle inside the context . ~={yellow}'100/1'=~
+- in this chapter we talk about how spring manage the creation of the bean and maintain it is lifecycle inside the context . '100/1'
 ### 1. Singleton bean scope
-- it is bean is default scope and the most used one ~={yellow}'100/3'=~
+- it is bean is default scope and the most used one '100/3'
 - most used in production apps .
-1. ~={green}how singleton beans work :=~
-	- the bean is created while loading the the context, start up of app and given a name for a bean (bean id) ~={yellow}'100/4'=~ .
-	- you always get the same instance when you refer to specific bean by it is name ~={yellow}'100/5'=~  .
-	- you can have multiple beans of same type each with a specific name, but each bean have only one instance ~={yellow}'100/6'=~ .
+1. how singleton beans work :
+	- the bean is created while loading the the context, start up of app and given a name for a bean (bean id) '100/4' .
+	- you always get the same instance when you refer to specific bean by it is name '100/5' .
+	- you can have multiple beans of same type each with a specific name, but each bean have only one instance '100/6' .
 	- in spring -> singleton means -> same instance for unique name .
-2. ~={green}singleton beans in real world scenarios =~:
+2. singleton beans in real world scenarios:
 	- where you want to create instance shared between multiple objects .
-	- must be immutable -> final -> DI constructor ~={yellow}'107/1'=~ .
+	- must be immutable -> final -> DI constructor '107/1' .
 	- mutable singleton will lead to race condition .
-	- ~={cyan}using beans gives three points=~ :
+	- using beans gives three points :
 		1. when you want spring to manage it and augment it with it is features and capabilities .
 		2. when you want immutable instance from the context -> singleton
 		3. if you want mutable bean, you can mace it prototyped scoped .
-3. ~={green}using eager and lazy instantiation=~ :
-	1. ~={cyan}Eager=~ :
+3. using eager and lazy instantiation :
+	1. Eager :
 		- spring is default approach when creating a singleton bean .
 		- the bean is created while instantiating the context .
 		- most used in real world apps .
 		- best performance than lazy approach because it load all beans at first no need to search for beans further, but more memory .
 		- the errors appears while starting up the app so it help us in test cases .
-		- if object delegates to another it is better that the other bean is already exists in the context instead of waiting for it ~={yellow}'100/1'=~ .
-	2. ~={cyan}Lazy=~ :
+		- if object delegates to another it is better that the other bean is already exists in the context instead of waiting for it '100/1' .
+	2. Lazy :
 		- had to specify with @Lazy annotation 
-		- the instance is created when you refer to it for first time ~={yellow}'108/3'=~ .
-		- if you refer to the bean for first time spring looks for it in context, if doesn't exist spring creates it and returns instance ~={yellow}'110/2,3'=~ .
+		- the instance is created when you refer to it for first time '108/3' .
+		- if you refer to the bean for first time spring looks for it in context, if doesn't exist spring creates it and returns instance '110/2,3' .
 		- if there is an error it will appear while runtime .
 		- less performance because of the search of bean, saves memory cause you create bean only when needed .
 ### 2. prototype bean scope
-1. ~={green}How prototype bean works ?=~ :
-	- every time you refer to the bean, spring creates new instance from that bean ~={yellow}'111/1'=~ .
-	- spring manage object's type, every time you refer to it, spring creates new instance ~={yellow}111/2=~ .
+1. How prototype bean works ? :
+	- every time you refer to the bean, spring creates new instance from that bean '111/1' .
+	- spring manage object's type, every time you refer to it, spring creates new instance '111/2' .
 	- @scope(BeanDefination.SCOPE_PROTOTYPE) .
 	- each thread requests the bean gets new instance and this solved race condition .
-		- ~={cyan}race condition=~ :
+		- race condition :
 			when two threads access one shared instance at the same time, and the threads tries to change it value, the last edit is the preserved one . 
-	- prototype is mutable ~={yellow}'111/3'=~ .
-2. ~={green}proto type bean in real world scenarios=~ :
+	- prototype is mutable '111/3'.
+2. proto type bean in real world scenarios :
 	- singleton is the most used one, prototype is rarely used .
 	- if you want mutable instance, prototype is the solution for this case .
-	- we want each call of method gets new instance ~={yellow}'117/2'=~ .
+	- we want each call of method gets new instance '117/2'.
 	- we would use prototype when refactoring or working with old applications .
-## ~={pink}Chapter 6=~
+## Chapter 6
 - in this Aspect Oriented Programming in spring (Spring Aspects)
-1. ~={blue}What is Aspect in spring=~ :
+1. What is Aspect in spring :
 	- another technique of IOC .
-	- the way spring intercept method call and can alter it is execution ~={yellow}'122/1' =~.
-	- a part of code you want spring to execute when calling specific method ~={yellow}123/5=~ .
-2. ~={blue}Why to use Aspects=~ :
+	- the way spring intercept method call and can alter it is execution '122/1' .
+	- a part of code you want spring to execute when calling specific method 123/5 .
+2. }Why to use Aspects :
 	1. allow decoupling between method parts, this makes method easy to understand .
 	2. let us focus on method logic .
 	3. makes code more maintainable .
 	4. spring uses aspects to implement its capabilities .
-3. ~={blue}Put in mind=~
-	- what part of code you want spring to execute when calling specific method -> ~={purple}Aspect=~ .
-	- when spring needs to execute logic of aspect (during method execution, after, or instead of method ) -> ~={purple}Advice=~ .
-	- which methods you want spring to intercept and use Aspect for them -> ~={purple}Point cut=~ .
-	- event trigger -> method call -> ~={purple}join point=~ ~={yellow}'123/6'=~ .
-	- Bean declares methods that Spring will intercept -> ~={purple}target object=~ ~={yellow}'123/8'=~ .
-	- if you requested a reference from target bean spring doesn't give you reference for this bean, instead it gives you reference of the object that implement the Aspect -> ~={purple}proxy=~ : this Approach called ~={purple}weaving=~ ~={yellow}'124/1,2,3'=~ .
-	- ![[SpringStartHereImages/Pasted image 20250429070650.png]]
-	- ![[SpringStartHereImages/Pasted image 20250429070828.png]]
-4. ~={blue}implementing Aspects with Spring AOP=~
-	- ~={green}to create Aspect we have to follow these 4 steps :=~
-		1. Enabling Aspect by adding ~={purple}@EnableAspectJAutoProxy=~ to the configuration class ~={yellow}129/1=~ .
-		2. create new class Annotated with ~={purple}@Aspect=~ and create a bean from it inside spring context ~={yellow}129/2=~ .
-		3. define method that will implement aspect logic with advice Annotation and when to execute, which method to intercept ~={yellow}'130'=~.
+3. Put in mind
+	- what part of code you want spring to execute when calling specific method -> Aspect.
+	- when spring needs to execute logic of aspect (during method execution, after, or instead of method ) -> Advice .
+	- which methods you want spring to intercept and use Aspect for them -> Point cut .
+	- event trigger -> method call -> join point '123/6' .
+	- Bean declares methods that Spring will intercept -> target object'123/8' .
+	- if you requested a reference from target bean spring doesn't give you reference for this bean, instead it gives you reference of the object that implement the Aspect -> proxy : this Approach called weaving '124/1,2,3' .
+	- ![](SpringStartHereImages/Pasted%20image%2020250429070650.png)
+	- ![](SpringStartHereImages/Pasted%20image%2020250429070828.png)
+4. implementing Aspects with Spring AOP
+	- to create Aspect we have to follow these 4 steps :
+		1. Enabling Aspect by adding @EnableAspectJAutoProxy to the configuration class '129/1' .
+		2. create new class Annotated with @Aspect and create a bean from it inside spring context '129/2' .
+		3. define method that will implement aspect logic with advice Annotation and when to execute, which method to intercept '130'.
 		4. implement Aspect logic code .
-	- using ~={purple}@Aspect=~ annotation doesn't create a bean we just telling spring that this class implementing logic of aspect, you had to explicitly create the bean using ~={purple}@Bean=~ or stereo type annotation ~={yellow}'131/1'=~ .
+	- using @Aspect annotation doesn't create a bean we just telling spring that this class implementing logic of aspect, you had to explicitly create the bean using ~={purple}@Bean=~ or stereo type annotation ~={yellow}'131/1'=~ .
 	- we use advice annotation to tell spring when and which method to intercept by ~={purple}@Around("execute(\*.services.\*.\*(..))")=~ ~={yellow}'132/1'=~ .
 		- ~={purple}@Around=~ -> tells spring which method call to intercept .
 		- first \* -> any return type .
