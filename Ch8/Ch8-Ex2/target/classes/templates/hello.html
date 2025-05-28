@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dynamic View 2</title>
+</head>
+<body>
+    <h1>welcome
+        <span th:style="'color: '+${color}"
+              th:text="${name}"></span>
+    </h1>
+</body>
+</html>
