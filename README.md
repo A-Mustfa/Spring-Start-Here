@@ -58,7 +58,7 @@ Explains transaction management with Spring and how to use `@Transactional`.
 ### [Ch14 - Spring Data](./Ch14/)
 Introduces Spring Data and how to simplify persistence using repositories.
 
-### [Ch15 - Testing](./Ch15/)
+### Ch15 - Testing
 Demonstrates unit and integration testing in Spring apps using JUnit and Spring Test.
 
 ---
